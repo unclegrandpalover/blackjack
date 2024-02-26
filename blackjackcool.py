@@ -21,8 +21,11 @@ def player_draw():
     global player_total
     cardnum = random.choice(deck)
     deck.remove(cardnum)
-    #all of this is card assignment. it might be messy but it works
-    if cardnum // 4 == 0 and player_total < 12:
+    #so the card assignments go up to 12, so this code makes it go down to atleast twelve if the card // 4 is 13 or above
+    while cardnum > 12:
+        cardnum = cardnum - 12
+    #all of this is card assignment. messy but it works
+    if cardnum // 4 == 0 and player_total < 11:
         cardvalue = 11
         rank = "ace"
     elif cardnum // 4 == 0 and player_total >= 12:
@@ -76,18 +79,23 @@ def player_draw():
     if cardnum // 4 == 12:
         cardvalue = 10
         rank = "king"
+    #now we shall tackle suits which is very easy using modulus
+    if cardnum % 4 == 0:
+        suit = "hearts"
+    if cardnum % 4 == 1:
+        suit = "clubs"
+    if cardnum % 4 == 2:
+        suit = "diamonds"
+    if cardnum % 4 == 3:
+        suit = "spades"
     #now it adds the value to your total and prints the draw
     player_total = cardvalue + player_total
-    print("you drew the", rank, "of suit!")
+    print("you drew the", rank, "of", suit)
 
 
 
 #function of the start of the game
 black_jack()
-
-
-
-
 
 
 
