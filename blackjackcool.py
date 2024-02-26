@@ -22,7 +22,7 @@ def player_draw():
     cardnum = random.choice(deck)
     deck.remove(cardnum)
     #all of this is card assignment. it might be messy but it works
-    if cardnum // 4 == 0 and playertotal < 12:
+    if cardnum // 4 == 0 and player_total < 12:
         cardvalue = 11
         rank = "ace"
     elif cardnum // 4 == 0 and player_total >= 12:
